@@ -1,0 +1,12 @@
+{
+  "name": "alkosto-deploy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Reproducción de estudio — página de producto estilo Alkosto (no comercial).",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

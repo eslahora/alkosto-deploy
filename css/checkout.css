@@ -1,0 +1,184 @@
+/* ============================================================
+   Checkout — reproducción de estudio (estilo Alkosto)
+   ============================================================ */
+
+/* Header de checkout */
+.checkout-header {
+  background: #fff;
+  border-bottom: 1px solid var(--alk-border);
+  position: sticky; top: 0; z-index: 50;
+}
+.checkout-header .container {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px;
+}
+.checkout-header .logo img { height: 34px; width: auto; }
+.checkout-header__title {
+  display: flex; align-items: center; gap: 8px;
+  color: var(--alk-green); font-size: 13.5px; font-weight: 600;
+}
+
+/* Layout */
+.checkout { padding: 22px 0 40px; }
+.back-link {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 13.5px; color: var(--alk-muted); margin-bottom: 8px;
+}
+.back-link svg { transform: rotate(180deg); }
+.back-link:hover { color: var(--alk-orange); }
+.checkout-title { font-size: 26px; font-weight: 800; margin-bottom: 20px; }
+
+.checkout-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  gap: 28px;
+  align-items: start;
+}
+
+/* Formulario */
+.checkout-form form { display: flex; flex-direction: column; gap: 18px; }
+.checkout-form fieldset {
+  border: 1px solid var(--alk-border); border-radius: 10px; padding: 18px;
+  background: #fff;
+}
+.checkout-form legend {
+  font-size: 16px; font-weight: 800; color: var(--alk-blue-dark);
+  display: flex; align-items: center; gap: 8px; padding: 0 8px;
+}
+.step-num {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--alk-orange); color: #fff; font-size: 13px; font-weight: 800;
+  display: grid; place-items: center;
+}
+.form-row { display: grid; gap: 14px; }
+.form-row.two { grid-template-columns: 1fr 1fr; }
+.form-row + .form-row { margin-top: 14px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 13px; font-weight: 600; color: var(--alk-ink); }
+.field input, .field select, .field textarea {
+  height: 46px; padding: 0 13px; border: 1.5px solid var(--alk-border);
+  border-radius: 8px; font-size: 14.5px; font-family: inherit; outline: none;
+  background: #fff; transition: border-color .15s, box-shadow .15s; width: 100%;
+}
+.field textarea { height: auto; padding: 10px 13px; resize: vertical; min-height: 60px; }
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--alk-blue); box-shadow: 0 0 0 3px rgba(26, 79, 138, .12);
+}
+.field input.invalid, .field select.invalid { border-color: #d33; background: #fff5f5; }
+
+/* Forma de pago */
+.pay-option {
+  display: flex; align-items: center; justify-content: space-between;
+  border: 1.5px solid var(--alk-border); border-radius: 10px; padding: 14px 16px;
+  cursor: pointer; transition: border-color .15s, background .15s; gap: 12px;
+}
+.pay-option + .pay-option { margin-top: 10px; }
+.pay-option:hover { border-color: var(--alk-blue); }
+.pay-option input { display: none; }
+.pay-option__main { display: flex; align-items: center; gap: 12px; }
+.pay-option__main > svg { color: var(--alk-blue); flex: 0 0 auto; }
+.pay-option__main strong { display: block; font-size: 15px; }
+.pay-option__number { color: var(--alk-orange); font-weight: 700; font-size: 13.5px; }
+.pay-option__check { color: transparent; flex: 0 0 auto; }
+.pay-option.selected {
+  border-color: var(--alk-orange); background: var(--alk-orange-soft);
+}
+.pay-option.selected .pay-option__check { color: var(--alk-orange); }
+
+.form-error {
+  margin: 0; padding: 11px 14px; background: #fdecea; color: #b3261e;
+  border: 1px solid #f5c6c0; border-radius: 8px; font-size: 13.5px;
+}
+
+/* CTA WhatsApp */
+.btn-wa {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; height: 54px; background: #25d366; color: #fff;
+  font-size: 16px; font-weight: 800; border-radius: 10px;
+  transition: background .15s, transform .05s; box-shadow: var(--shadow-md);
+}
+.btn-wa:hover { background: #1fb959; }
+.btn-wa:active { transform: scale(.98); }
+.checkout-form__note { text-align: center; font-size: 13px; color: var(--alk-muted); margin: 10px 0 0; }
+.checkout-form__note strong { color: var(--alk-green); }
+
+/* Resumen */
+.order-summary {
+  border: 1px solid var(--alk-border); border-radius: 12px; padding: 18px;
+  background: #fff; position: sticky; top: 84px;
+}
+.order-summary h2 { font-size: 17px; font-weight: 800; margin-bottom: 14px; }
+.os-item { display: flex; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--alk-border); }
+.os-item img { width: 76px; height: 76px; object-fit: cover; border-radius: 8px; border: 1px solid var(--alk-border); }
+.os-item__info { flex: 1; min-width: 0; }
+.os-item__name { font-size: 13.5px; font-weight: 600; margin: 0 0 4px; }
+.os-item__unit { font-size: 12.5px; color: var(--alk-muted); margin: 0 0 8px; }
+.os-qty { display: inline-flex; align-items: center; border: 1px solid var(--alk-border); border-radius: 6px; overflow: hidden; }
+.os-qty button { width: 30px; height: 32px; font-size: 17px; background: #fff; color: var(--alk-ink); }
+.os-qty button:hover { background: var(--alk-gray-bg); }
+.os-qty input { width: 38px; text-align: center; font-size: 14px; font-weight: 700; border: none; outline: none; -moz-appearance: textfield; }
+.os-qty input::-webkit-outer-spin-button, .os-qty input::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+.os-lines { padding: 12px 0; border-bottom: 1px solid var(--alk-border); }
+.os-line { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 8px; }
+.os-line .free { color: var(--alk-green); font-weight: 700; }
+.os-line.os-total { font-size: 18px; font-weight: 800; margin: 12px 0 0; padding-top: 12px; border-top: 1px dashed var(--alk-border); }
+.os-line.os-total span:last-child { color: var(--alk-orange); }
+
+.os-note { display: flex; gap: 8px; align-items: flex-start; font-size: 12.5px; color: var(--alk-muted); margin-top: 12px; }
+.os-note svg { color: var(--alk-blue); flex: 0 0 auto; margin-top: 1px; }
+
+/* Responsive */
+@media (max-width: 860px) {
+  .checkout-grid { grid-template-columns: 1fr; }
+  .order-summary { position: static; order: -1; }
+}
+@media (max-width: 520px) {
+  .form-row.two { grid-template-columns: 1fr; }
+  .checkout-title { font-size: 22px; }
+}
+
+/* ============================================================
+   Pago con Bre-B + billeteras digitales
+   ============================================================ */
+.pay-method-card {
+  border: 1.5px solid var(--alk-orange); border-radius: 10px;
+  padding: 16px; background: var(--alk-orange-soft);
+}
+.pay-method-card__head { display: flex; align-items: center; gap: 12px; }
+.pay-method-card__head > svg { color: var(--alk-blue); flex: 0 0 auto; }
+.pay-method-card__info { flex: 1; display: flex; flex-direction: column; }
+.pay-method-card__info strong { font-size: 15px; }
+
+.wallet-picker__title { margin: 16px 0 10px; font-size: 13.5px; font-weight: 600; color: var(--alk-ink); }
+.wallet-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 10px; }
+.wallet {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 12px 8px; border: 1.5px solid var(--alk-border); border-radius: 10px;
+  background: #fff; transition: border-color .15s, transform .1s, box-shadow .15s;
+  cursor: pointer; font-family: inherit;
+}
+.wallet:hover { border-color: var(--alk-blue); transform: translateY(-2px); }
+.wallet.active { border-color: var(--alk-orange); box-shadow: 0 0 0 3px rgba(235, 91, 37, .15); }
+.wallet__logo {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 15px;
+}
+.wallet__name { font-size: 12px; font-weight: 600; color: var(--alk-ink); text-align: center; }
+.wallet__logo--nequi { background: #7b2d8b; }
+.wallet__logo--bancolombia { background: #ffd100; color: #111; }
+.wallet__logo--daviplata { background: #e4002b; }
+.wallet__logo--bogota { background: #b5121b; }
+.wallet__logo--bbva { background: #004481; }
+
+.wallet-instruction {
+  margin-top: 16px; padding: 14px; background: #fff;
+  border: 1px solid var(--alk-border); border-radius: 10px;
+}
+.wallet-instruction p { margin: 0 0 12px; font-size: 13.5px; }
+.wallet-redirect {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--alk-blue); color: #fff; font-size: 13.5px; font-weight: 700;
+  padding: 10px 16px; border-radius: 8px; transition: background .15s;
+}
+.wallet-redirect:hover { background: var(--alk-blue-dark); color: #fff; }
