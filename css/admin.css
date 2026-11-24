@@ -1,0 +1,67 @@
+/* ============================================================
+   Panel administrador — reproducción de estudio
+   ============================================================ */
+
+/* Login */
+.login { min-height: 100vh; display: grid; place-items: center; padding: 20px; background: var(--alk-gray-bg); }
+.login__card {
+  width: 100%; max-width: 380px; background: #fff; border: 1px solid var(--alk-border);
+  border-radius: 14px; padding: 30px 26px; box-shadow: var(--shadow-md); text-align: center;
+}
+.login__logo { height: 34px; width: auto; margin: 0 auto 14px; }
+.login__card h1 { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+.login__sub { font-size: 13px; color: var(--alk-muted); margin: 0 0 18px; }
+.login .field { text-align: left; margin-bottom: 12px; }
+.login .field label { font-size: 13px; font-weight: 600; }
+.login .field input {
+  width: 100%; height: 44px; padding: 0 13px; border: 1.5px solid var(--alk-border);
+  border-radius: 8px; font-size: 14.5px; outline: none;
+}
+.login .field input:focus { border-color: var(--alk-blue); box-shadow: 0 0 0 3px rgba(26,79,138,.12); }
+.login__error { margin: 0 0 12px; font-size: 13px; color: #b3261e; }
+.login .btn-primary { width: 100%; }
+
+/* Header */
+.admin__header { background: var(--alk-blue-dark); color: #fff; position: sticky; top: 0; z-index: 50; }
+.admin__header-inner { display: flex; align-items: center; gap: 16px; height: 60px; }
+.admin__logo { height: 26px; width: auto; filter: brightness(0) invert(1); }
+.admin__header-inner h1 { font-size: 17px; font-weight: 800; flex: 1; }
+.admin__logout { color: #fff; font-size: 13.5px; font-weight: 600; padding: 8px 14px; border: 1px solid rgba(255,255,255,.35); border-radius: 8px; }
+.admin__logout:hover { background: rgba(255,255,255,.12); }
+
+.admin__main { padding: 24px 16px 40px; }
+
+/* Cards */
+.admin__cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.acard { border: 1px solid var(--alk-border); border-radius: 12px; padding: 16px; background: #fff; }
+.acard__label { display: block; font-size: 12px; font-weight: 600; color: var(--alk-muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+.acard strong { font-size: 22px; font-weight: 800; color: var(--alk-blue-dark); display: block; margin-bottom: 12px; }
+.acard .acard__small { font-size: 15px; }
+.acard__actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.acard__hint { font-size: 12.5px; font-weight: 700; color: var(--alk-orange); }
+
+/* Botones pequeños */
+.btn-sm { height: 36px; padding: 0 14px; font-size: 13px; border-radius: 7px; }
+
+/* Pedidos */
+.admin__orders { margin-top: 26px; }
+.admin__orders-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.admin__orders-head h2 { font-size: 19px; font-weight: 800; }
+.admin__orders-note { font-size: 13px; color: var(--alk-muted); margin: 0 0 14px; max-width: 720px; }
+
+.orders { display: flex; flex-direction: column; gap: 12px; }
+.orders__empty { padding: 30px; text-align: center; color: var(--alk-muted); border: 1px dashed var(--alk-border); border-radius: 12px; font-size: 14px; }
+.order { border: 1px solid var(--alk-border); border-radius: 12px; background: #fff; overflow: hidden; }
+.order__head { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; background: var(--alk-gray-bg); font-size: 12.5px; }
+.order__id { font-weight: 800; color: var(--alk-orange); }
+.order__date { color: var(--alk-muted); }
+.order__body { padding: 14px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.order__product { font-weight: 700; margin: 0 0 4px; }
+.order__meta { font-size: 13px; color: var(--alk-muted); margin: 0; }
+.order__customer p { margin: 0 0 3px; font-size: 13.5px; }
+.order__actions { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 16px 14px; }
+
+@media (max-width: 640px) {
+  .order__body { grid-template-columns: 1fr; }
+  .admin__header-inner h1 { font-size: 15px; }
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel administrador — Alkosto (reproducción de estudio)</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+  <!-- ============ Login ============ -->
+  <div id="loginScreen" class="login">
+    <div class="login__card">
+      <img src="img/logo.svg" alt="alkosto" class="login__logo" />
+      <h1>Panel administrador</h1>
+      <p class="login__sub">Ingresa con tus credenciales para gestionar la tienda.</p>
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="loginUser">Usuario</label>
+          <input id="loginUser" type="text" autocomplete="username" placeholder="admin" />
+        </div>
+        <div class="field">
+          <label for="loginPass">Contraseña</label>
+          <input id="loginPass" type="password" autocomplete="current-password" placeholder="••••••••" />
+        </div>
+        <p id="loginError" class="login__error" hidden>Credenciales incorrectas. Intenta de nuevo.</p>
+        <button type="submit" class="btn-primary">Ingresar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ Dashboard ============ -->
+  <div id="dashboard" class="admin" hidden>
+    <header class="admin__header">
+      <div class="container admin__header-inner">
+        <img src="img/logo.svg" alt="alkosto" class="admin__logo" />
+        <h1>Panel administrador</h1>
+        <button id="logoutBtn" class="admin__logout">Salir</button>
+      </div>
+    </header>
+
+    <main class="container admin__main">
+
+      <section class="admin__cards">
+        <div class="acard">
+          <span class="acard__label">WhatsApp de ventas</span>
+          <strong>300 781 2632</strong>
+          <div class="acard__actions">
+            <a href="https://wa.me/573007812632" target="_blank" rel="noopener" class="btn-primary btn-sm">Abrir chat</a>
+            <a href="https://web.whatsapp.com" target="_blank" rel="noopener" class="btn-ghost btn-sm">WhatsApp Web</a>
+          </div>
+        </div>
+        <div class="acard">
+          <span class="acard__label">Llave Bre-B (pagos)</span>
+          <strong>301 781 4702</strong>
+          <div class="acard__actions">
+            <button class="btn-ghost btn-sm" id="copyKey">Copiar llave</button>
+          </div>
+        </div>
+        <div class="acard">
+          <span class="acard__label">Sitio web</span>
+          <strong class="acard__small">eslahora.github.io/alkosto</strong>
+          <div class="acard__actions">
+            <a href="index.html" target="_blank" rel="noopener" class="btn-ghost btn-sm">Ver tienda</a>
+          </div>
+        </div>
+        <div class="acard">
+          <span class="acard__label">Producto activo</span>
+          <strong class="acard__small">TV KALLEY 65" · $1.229.970</strong>
+          <div class="acard__actions">
+            <span class="acard__hint">Black Friday −70%</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="admin__orders">
+        <div class="admin__orders-head">
+          <h2>Pedidos recientes</h2>
+          <button id="refreshBtn" class="btn-ghost btn-sm">Actualizar</button>
+        </div>
+        <p class="admin__orders-note">
+          Los pedidos se guardan en este navegador (localStorage) y también llegan por WhatsApp al
+          <strong>300 781 2632</strong>. Para ver pedidos desde otros dispositivos, revisa tu WhatsApp.
+        </p>
+        <div id="ordersList" class="orders"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

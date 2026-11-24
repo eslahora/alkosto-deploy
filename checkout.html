@@ -121,23 +121,23 @@
 
               <p class="wallet-picker__title">Elige tu billetera digital para pagar:</p>
               <div class="wallet-grid">
-                <button type="button" class="wallet" data-wallet="Nequi" data-url="https://www.nequi.com.co">
+                <button type="button" class="wallet" data-wallet="Nequi" data-scheme="nequi://" data-url="https://www.nequi.com.co">
                   <span class="wallet__logo wallet__logo--nequi">N</span>
                   <span class="wallet__name">Nequi</span>
                 </button>
-                <button type="button" class="wallet" data-wallet="Bancolombia" data-url="https://www.bancolombia.com/personas">
+                <button type="button" class="wallet" data-wallet="Bancolombia" data-scheme="bancolombia://" data-url="https://www.bancolombia.com/personas">
                   <span class="wallet__logo wallet__logo--bancolombia">B</span>
                   <span class="wallet__name">Bancolombia</span>
                 </button>
-                <button type="button" class="wallet" data-wallet="Daviplata" data-url="https://www.daviplata.com">
+                <button type="button" class="wallet" data-wallet="Daviplata" data-scheme="daviplata://" data-url="https://www.daviplata.com">
                   <span class="wallet__logo wallet__logo--daviplata">D</span>
                   <span class="wallet__name">Daviplata</span>
                 </button>
-                <button type="button" class="wallet" data-wallet="Banco de Bogotá" data-url="https://www.bancodebogota.com">
+                <button type="button" class="wallet" data-wallet="Banco de Bogotá" data-scheme="bancodebogota://" data-url="https://www.bancodebogota.com">
                   <span class="wallet__logo wallet__logo--bogota">Bo</span>
                   <span class="wallet__name">Banco de Bogotá</span>
                 </button>
-                <button type="button" class="wallet" data-wallet="BBVA" data-url="https://www.bbva.com.co">
+                <button type="button" class="wallet" data-wallet="BBVA" data-scheme="bbva://" data-url="https://www.bbva.com.co">
                   <span class="wallet__logo wallet__logo--bbva">BBVA</span>
                   <span class="wallet__name">BBVA</span>
                 </button>
@@ -145,9 +145,9 @@
 
               <div class="wallet-instruction" id="walletInstruction" hidden>
                 <p>Abre tu app <strong id="walletName">…</strong> y transfiere a la llave Bre-B <strong>301 781 4702</strong>.</p>
-                <a class="wallet-redirect" id="walletLink" href="#" target="_blank" rel="noopener">
-                  Abrir <span id="walletLinkName">…</span> para pagar ↗
-                </a>
+                <button type="button" class="wallet-redirect" id="walletOpen">
+                  Abrir la app de <span id="walletLinkName">…</span> para pagar
+                </button>
               </div>
             </div>
           </fieldset>
@@ -204,6 +204,7 @@
       <div class="site-footer__legal">
         <span>© 2026 · Reproducción de estudio sin fines comerciales.</span>
         <span class="note">Sitio demostrativo con fines educativos. No es el sitio oficial de Alkosto.</span>
+        <a href="admin.html">Panel admin</a>
       </div>
     </div>
   </footer>

@@ -46,6 +46,7 @@
 
   let item = loadItem();
   let selectedWallet = null;
+  let selectedWalletData = null;
 
   /* ---------- Render del resumen ---------- */
   function renderSummary() {
@@ -88,6 +89,26 @@
   }
 
   /* ---------- Billeteras digitales (pago con Bre-B) ---------- */
+  function openWalletApp(data) {
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (!isMobile || !data.scheme) {
+      window.open(data.url, "_blank", "noopener");
+      return;
+    }
+    let opened = false;
+    const onVis = () => { opened = true; };
+    document.addEventListener("visibilitychange", onVis, { once: true });
+    const iframe = document.createElement("iframe");
+    iframe.style.display = "none";
+    iframe.src = data.scheme;
+    document.body.appendChild(iframe);
+    setTimeout(() => {
+      document.removeEventListener("visibilitychange", onVis);
+      if (!opened) window.open(data.url, "_blank", "noopener");
+      iframe.remove();
+    }, 1800);
+  }
+
   function initWallets() {
     const copyBtn = $("#payCopy");
     if (copyBtn) {
@@ -102,6 +123,7 @@
     $all(".wallet").forEach((btn) => {
       btn.addEventListener("click", () => {
         selectedWallet = btn.dataset.wallet;
+        selectedWalletData = { scheme: btn.dataset.scheme || "", url: btn.dataset.url || "", name: btn.dataset.wallet };
         $all(".wallet").forEach((w) => w.classList.remove("active"));
         btn.classList.add("active");
 
@@ -109,12 +131,13 @@
         if (inst) inst.hidden = false;
         const nameEl = $("#walletName");
         if (nameEl) nameEl.textContent = selectedWallet;
-
-        const link = $("#walletLink");
         const linkName = $("#walletLinkName");
-        if (link) link.href = btn.dataset.url || "#";
         if (linkName) linkName.textContent = selectedWallet;
       });
+    });
+
+    $("#walletOpen")?.addEventListener("click", () => {
+      if (selectedWalletData) openWalletApp(selectedWalletData);
     });
   }
 
@@ -169,6 +192,15 @@
     return ok;
   }
 
+  function saveOrder(order) {
+    try {
+      const key = "alkosto_orders";
+      const arr = JSON.parse(localStorage.getItem(key) || "[]");
+      arr.unshift(order);
+      localStorage.setItem(key, JSON.stringify(arr));
+    } catch (e) { /* localStorage no disponible */ }
+  }
+
   function onSubmit(e) {
     e.preventDefault();
     const err = $("#formError");
@@ -177,6 +209,24 @@
       return;
     }
     if (err) err.hidden = true;
+    const f = (id) => ($("#" + id)?.value || "").trim();
+    const qty = currentQty();
+    saveOrder({
+      id: "ALK-" + Date.now(),
+      date: new Date().toISOString(),
+      name: f("fNombre") + " " + f("fApellido"),
+      email: f("fEmail"),
+      phone: f("fTelefono"),
+      dept: f("fDepartamento"),
+      city: f("fCiudad"),
+      address: f("fDireccion"),
+      barrio: f("fBarrio") || "-",
+      notas: f("fNotas") || "-",
+      product: item.name,
+      qty: qty,
+      total: item.price * qty,
+      wallet: selectedWallet || "Bre-B",
+    });
     const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(buildMessage());
     window.location.href = url;
   }
